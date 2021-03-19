@@ -1,6 +1,7 @@
 const express = require("express")
 const app = express()
 const expressLayouts = require("express-ejs-layouts");
+const bodyParser = require("body-parser")
 require("dotenv").config()
 const PORT = process.env.PORT || 3000
 
@@ -12,9 +13,14 @@ app.use(expressLayouts)
 
 // Get the routes file
 const indexRouter = require("./routes/index")
+const authorRouter = require("./routes/authors")
+
 
 // Set static files
 app.use(express.static("public"))
+
+//body parser
+app.use(express.urlencoded({limit:"10mb", extended:false}))
 
 // MongoDB
 const mongoose = require("mongoose")
@@ -27,6 +33,7 @@ db.on("error", error => console.error(error))
 db.on("open", () => console.log("Connected to database!")) //once significa che verrà eseguito solo una volta
 
 app.use("/", indexRouter)
+app.use("/authors", authorRouter)
 
 // Start server
 app.listen(PORT, ()=>{
