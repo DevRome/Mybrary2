@@ -14,6 +14,7 @@ app.use(expressLayouts)
 // Get the routes file
 const indexRouter = require("./routes/index")
 const authorRouter = require("./routes/authors")
+const bookRouter = require("./routes/books")
 
 
 // Set static files
@@ -34,6 +35,8 @@ db.on("open", () => console.log("Connected to database!")) //once significa che 
 
 app.use("/", indexRouter)
 app.use("/authors", authorRouter)
+app.use("/books", bookRouter)
+
 
 // Start server
 app.listen(PORT, ()=>{

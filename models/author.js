@@ -1,5 +1,4 @@
 const mongoose = require("mongoose")
-const { stringify } = require("qs")
 
 // create a schema, a schema is essentially a table in sql databases
 const authorSchema = new mongoose.Schema({
