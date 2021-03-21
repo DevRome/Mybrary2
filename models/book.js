@@ -1,7 +1,4 @@
 const mongoose = require("mongoose")
-const path = require("path")
-
-const coverImageBasePath = "upload/bookCovers" // const per multer, definisce la path di upload
 
 // create a schema, a schema is essentially a table in sql databases
 const bookSchema = new mongoose.Schema({
@@ -25,7 +22,11 @@ const bookSchema = new mongoose.Schema({
       required: true,
       default: Date.now  
     },
-    coverImageName:{ // Immagazzina l'immagine come stringa, a parte fa l'upload
+    coverImage:{ // Immagazzina l'immagine come stringa, a parte fa l'upload
+        type: Buffer,
+        required: true
+    },
+    coverImageType: {
         type: String,
         required: true
     },
@@ -37,8 +38,8 @@ const bookSchema = new mongoose.Schema({
 })
 
 bookSchema.virtual("coverImagePath").get(function() {
-    if(this.coverImageName != null){
-        return path.join("/", coverImageBasePath, this.coverImageName)
+    if(this.coverImage != null && this.coverImageType != null){
+        return "data:" + this.coverImageType + ";charset=utf-8;base64,"+ this.coverImage.toString("base64")
     }
 })
 
@@ -46,4 +47,3 @@ bookSchema.virtual("coverImagePath").get(function() {
 module.exports = mongoose.model("Book", bookSchema)
                     // authorSchema è il noe dello Schema che definisce la struttura dello schema
 
-module.exports.coverImageBasePath = coverImageBasePath; // esporto la constante dichiarata sopra
