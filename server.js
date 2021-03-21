@@ -2,6 +2,7 @@ const express = require("express")
 const app = express()
 const expressLayouts = require("express-ejs-layouts");
 const bodyParser = require("body-parser")
+const methodOverride = require("method-override")
 require("dotenv").config()
 const PORT = process.env.PORT || 3000
 
@@ -10,6 +11,9 @@ app.set("view engine", "ejs")
 app.set("views", __dirname + "/views")
 app.set("layout", "layouts/layout") // stesso concetto di partials, mettiamo header e footer
 app.use(expressLayouts)
+
+// Use method-override
+app.use(methodOverride("_method"))
 
 // Get the routes file
 const indexRouter = require("./routes/index")

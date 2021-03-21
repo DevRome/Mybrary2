@@ -1,0 +1,4 @@
+<%# Per cancellare dati usare sempre i form e la route impostarla sempre con verbo DELETE, utilizzando la libreria method-override, perché se si utilizza GET nella route, Google quando passa con i suoi crwaler, analizza tutte le GET routes, e quindi potrebbe cancellare post, dati ecc inavvertitamente%>
+<form method="POST" action="<%= url %>?_method=DELETE">
+    <button type="submit">Delete</button>
+</form>
