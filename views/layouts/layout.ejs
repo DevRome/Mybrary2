@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <%# Filepond - ricordarsi di iserire defer nello script %>
+    <%# Filepond - ricordarsi di inserire defer nello script %>
     <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet" />
     <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
 
@@ -16,15 +16,21 @@
     <%# mio javascript per inizializzare Filepond %>
     <script defer src="/javascripts/fileUpload.js"></script>
 
+    <%# mio CSS %>
+    <link rel="stylesheet" href="/css/main.css"> 
+
     <title>MyBrary</title>
 </head>
 <body>
+    <div class="container">
     <%- include("../partials/header.ejs") %> 
-    <%- include("../partials/errorMessage.ejs") %> 
-    <%- body %>
-    <br>
-    After
-    
+
+        <div class="inner-container">
+            <%- include("../partials/errorMessage.ejs") %> 
+            <%- body %>
+        </div>
+        
+    </div>    
 
 </body>
 </html>

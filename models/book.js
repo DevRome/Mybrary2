@@ -43,7 +43,7 @@ bookSchema.virtual("coverImagePath").get(function() {
     }
 })
 
-                // Author sarà quindi il nome del model e della tabella nel database
+                // Book sarà quindi il nome del model e della tabella nel database
 module.exports = mongoose.model("Book", bookSchema)
-                    // authorSchema è il noe dello Schema che definisce la struttura dello schema
+                    // bookSchema è il nome dello Schema che definisce la struttura dello schema
 
