@@ -16,7 +16,7 @@
     display: flex;
     flex-direction: column;
     margin-left: 2rem;
-    flex-grow: 1;
+    flex-grow: 1; /* per fargi prendere il massimo della larghezza*/
     flex-basis: 0;
 }
 
