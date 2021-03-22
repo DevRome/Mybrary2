@@ -1,10 +1,10 @@
-<div>
-    <label for="name">Title</label>
-    <input type="text" name="title" value="<%= book.title %>">
-</div>
-
-<div>
-    <label for="name">Author</label>
+<div class="form-row">
+    <div class="form-item">
+            <label for="name">Title</label>
+            <input type="text" name="title" value="<%= book.title %>">
+    </div>
+    <div class="form-item">
+        <label for="name">Author</label>
     <select name="author">
         <% authors.forEach((author)=>{ %>
             <% if (author.id === book.author) { %>
@@ -14,24 +14,27 @@
             <% } %>
         <% }) %>
     </select>
+    </div>
 </div>
 
-<div>
-    <label for="publishDate">Publish Date</label>
-    <input type="date" name="publishDate" value="<%= book.publishDate == null ? "" : book.publishDate.toISOString().split("T")[0] %>">
+<div class="form-row">
+    <div class="form-item">
+        <label for="publishDate">Publish Date</label>
+        <input type="date" name="publishDate" value="<%= book.publishDate == null ? "" : book.publishDate.toISOString().split("T")[0] %>">
+    </div>
+    <div class="form-item">
+        <label for="pageCount">Page Count</label>
+        <input type="number" name="pageCount" min="1" value="<%= book.pageCount %>">
+    </div>
 </div>
 
-<div>
-    <label for="pageCount">Page Count</label>
-    <input type="number" name="pageCount" min="1" value="<%= book.pageCount %>">
-</div>
-
-<div>
-    <label for="cover">Cover</label>
-    <input type="file" name="cover" class="filepond"><%# FILEPOND!!!!%>
-</div>
-
-<div>
-    <label for="description">Description</label>
-    <textarea name="description"><%= book.description %></textarea>
+<div class="form-row">
+    <div class="form-item form-item-no-grow">
+        <label for="cover">Cover</label>
+        <input type="file" name="cover" class="filepond"><%# FILEPOND!!!!%>
+    </div>
+    <div class="form-item">
+        <label for="description">Description</label>
+        <textarea name="description"><%= book.description %></textarea>
+    </div>
 </div>
